@@ -1,0 +1,88 @@
+/* Define global variables for colors */
+:root {
+  --primary-bg: #ffffff; /* White background for navbar */
+  --primary-text: #333333; /* Dark text color */
+  --button-bg: #007bff; /* Blue for button */
+  --button-text: #ffffff; /* White button text */
+  --button-hover-bg: #0056b3; /* Dark blue on hover */
+  --border-color: #e0e0e0; /* Light grey for border */
+  --box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1); /* Soft shadow */
+  --transition-duration: 0.3s; /* Smooth transitions */
+  --border-radius: 8px; /* Rounded corners */
+  --font-family: 'Roboto', sans-serif; /* Font */
+}
+
+/* Navbar */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 25px;
+  background-color: var(--primary-bg);
+  color: var(--primary-text);
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: var(--box-shadow);
+  transition: background-color var(--transition-duration);
+}
+
+/* Navbar Brand (Logo/Text) */
+.navbar-brand {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--primary-text);
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  transition: color var(--transition-duration);
+}
+
+/* Navbar Actions (buttons) */
+.navbar-actions {
+  display: flex;
+  gap: 20px;
+}
+
+/* Theme Toggle Button */
+.navbar-actions .theme-toggle {
+  background-color: var(--button-bg);
+  color: var(--button-text);
+  border: none;
+  padding: 10px 20px;
+  border-radius: var(--border-radius);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color var(--transition-duration), transform var(--transition-duration);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.navbar-actions .theme-toggle:hover {
+  background-color: var(--button-hover-bg);
+  transform: translateY(-2px); /* Slight lift on hover */
+}
+
+.navbar-actions .theme-toggle:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.4); /* Accessibility focus effect */
+}
+
+/* Responsive Design for smaller screens */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+  }
+
+  .navbar-brand {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+  }
+
+  .navbar-actions {
+    width: 100%;
+    justify-content: flex-start;
+    gap: 15px;
+  }
+}

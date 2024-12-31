@@ -1,0 +1,242 @@
+/* Base Styles */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Poppins', Arial, sans-serif;
+  background-color: #f4f6f9;
+  color: #333;
+  line-height: 1.6;
+}
+
+h1, h2 {
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Menu Bar */
+.menu-bar {
+  background-color: #2c3e50;
+  padding: 15px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.menu-bar a {
+  text-decoration: none;
+  color: #fff;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0 15px;
+  transition: color 0.3s ease;
+}
+
+.menu-bar a:hover {
+  color: #f39c12;
+}
+
+.menu-bar .logo {
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+/* Admin Page Layout */
+.admin-page {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.admin-title {
+  font-size: 2rem;
+  text-align: center;
+  color: #34495e;
+  margin-bottom: 10px;
+}
+
+p {
+  font-size: 1.2rem;
+  text-align: center;
+  color: #7f8c8d;
+}
+
+/* Section Styling */
+.section {
+  margin-bottom: 30px;
+  padding: 20px;
+  border-radius: 10px;
+  background-color: #f9fbfd;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+}
+
+.section h2 {
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+  color: #2c3e50;
+  font-weight: 600;
+}
+
+/* Form Styling */
+.admin-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+}
+
+.admin-form input,
+.admin-form textarea,
+.admin-form button {
+  width: calc(50% - 10px);
+  padding: 12px;
+  border: 1px solid #dfe6e9;
+  border-radius: 8px;
+  font-size: 1rem;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.admin-form textarea {
+  resize: vertical;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus {
+  border-color: #3498db;
+  box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  outline: none;
+}
+
+.admin-form button {
+  width: auto;
+  padding: 12px 20px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  background-color: #3498db;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.admin-form button:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+}
+
+/* Table Container for Scrolling */
+.table-container {
+  width: 100%;
+  overflow-x: auto; /* Enable horizontal scrolling */
+  margin: 20px 0;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Table Styles */
+.company-table {
+  width: 100%; /* Ensure the table fits within the container */
+  border-collapse: collapse;
+}
+
+.company-table th,
+.company-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  font-size: 0.9rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  max-width: 200px;
+  overflow: hidden; /* Add ellipsis for overflowing text */
+}
+
+.company-table th {
+  background-color: #3498db;
+  color: #fff;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+.company-table td {
+  color: #333;
+}
+
+.company-table tr:hover {
+  background-color: #f9f9f9;
+  transition: background-color 0.3s ease;
+}
+
+/* Action Buttons */
+.company-table td button {
+  padding: 6px 10px;
+  font-size: 0.8rem;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 5px;
+}
+
+.company-table td button:nth-child(1) {
+  background-color: #27ae60;
+  color: #fff;
+}
+
+.company-table td button:nth-child(1):hover {
+  background-color: #219150;
+}
+
+.company-table td button:nth-child(2) {
+  background-color: #e74c3c;
+  color: #fff;
+}
+
+.company-table td button:nth-child(2):hover {
+  background-color: #c0392b;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .table-container {
+    width: 100%;
+  }
+
+  .company-table th,
+  .company-table td {
+    font-size: 0.75rem; /* Adjust font size for smaller screens */
+    padding: 6px 8px; /* Adjust padding for a more compact table */
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-title {
+    font-size: 1.6rem;
+  }
+
+  .menu-bar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .menu-bar a {
+    margin: 5px 0;
+  }
+
+  .company-table th,
+  .company-table td {
+    font-size: 0.7rem; /* Smaller font size for very small screens */
+    padding: 4px 6px; /* Even smaller padding */
+  }
+
+  .company-table td button {
+    padding: 4px 6px; /* Adjust button padding */
+    font-size: 0.7rem; /* Smaller button font */
+  }
+}

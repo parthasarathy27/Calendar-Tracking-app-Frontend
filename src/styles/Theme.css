@@ -1,0 +1,42 @@
+/* frontend/styles/Theme.css */
+
+/* Default (Light Mode) */
+:root {
+    --bg-light: #ffffff;
+    --bg-dark: #181818;
+    --text-light: #000000;
+    --text-dark: #ffffff;
+    --button-bg-light: #4caf50;
+    --button-bg-dark: #3b8e3b;
+    --button-hover-light: #45a049;
+    --button-hover-dark: #357c35;
+  }
+  
+  /* Light Mode Styles */
+  body {
+    background-color: var(--bg-light);
+    color: var(--text-light);
+    transition: all 0.3s ease;
+  }
+  
+  body.dark-mode {
+    background-color: var(--bg-dark);
+    color: var(--text-dark);
+  }
+  
+  .toggle-view-btn {
+    background-color: var(--button-bg-light);
+  }
+  
+  .toggle-view-btn:hover {
+    background-color: var(--button-hover-light);
+  }
+  
+  body.dark-mode .toggle-view-btn {
+    background-color: var(--button-bg-dark);
+  }
+  
+  body.dark-mode .toggle-view-btn:hover {
+    background-color: var(--button-hover-dark);
+  }
+  

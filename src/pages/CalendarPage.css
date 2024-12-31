@@ -1,0 +1,174 @@
+/* src/components/CalendarPage.css */
+:root {
+  --bg-light: #ffffff;
+  --bg-dark: #181818;
+  --text-light: #000000;
+  --text-dark: #ffffff;
+  --button-bg-light: #4caf50;
+  --button-bg-dark: #3b8e3b;
+  --button-hover-light: #45a049;
+  --button-hover-dark: #357c35;
+  --primary-color-light: #4a90e2;
+  --primary-color-dark: #0077ff;
+  --border-radius: 8px;
+  --transition-speed: 0.3s;
+}
+
+/* Global Body Styles */
+body {
+  background-color: var(--bg-light);
+  color: var(--text-light);
+  font-family: 'Roboto', sans-serif;
+  transition: all var(--transition-speed) ease;
+  margin: 0;
+  padding: 0;
+}
+
+body.dark-mode {
+  background-color: var(--bg-dark);
+  color: var(--text-dark);
+}
+
+/* Calendar Page Container */
+.calendar-page {
+  display: flex;
+  padding: 30px;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 100vh;
+  background-image: url('https://source.unsplash.com/1600x900/?nature'); /* Optional background */
+  background-size: cover;
+  background-position: center;
+  transition: background 0.5s ease-in-out;
+}
+
+/* Calendar Content Wrapper */
+.calendar-content {
+  width: 100%;
+  max-width: 1200px;
+  background-color: rgba(255, 255, 255, 0.85); /* semi-transparent white background */
+  padding: 30px;
+  border-radius: var(--border-radius);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+/* Calendar Header Styles */
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 2rem;
+  color: var(--primary-color-light);
+}
+
+h3 {
+  font-size: 1.2rem;
+  color: var(--text-light);
+}
+
+.calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+}
+
+.nav-btn {
+  background-color: var(--primary-color-light);
+  color: var(--text-light);
+  padding: 10px 20px;
+  border: none;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.2s ease;
+}
+
+.nav-btn:hover {
+  background-color: var(--primary-color-dark);
+}
+
+body.dark-mode .nav-btn {
+  background-color: var(--primary-color-dark);
+}
+
+body.dark-mode .nav-btn:hover {
+  background-color: var(--primary-color-light);
+}
+
+.toggle-view-btn {
+  padding: 10px 15px;
+  background-color: var(--button-bg-light);
+  color: white;
+  border: none;
+  cursor: pointer;
+  border-radius: var(--border-radius);
+  transition: background-color var(--transition-speed);
+}
+
+.toggle-view-btn:hover {
+  background-color: var(--button-hover-light);
+}
+
+body.dark-mode .toggle-view-btn {
+  background-color: var(--button-bg-dark);
+}
+
+body.dark-mode .toggle-view-btn:hover {
+  background-color: var(--button-hover-dark);
+}
+
+/* Full-Screen Calendar Grid */
+.calendar {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 10px;
+  padding-top: 20px;
+}
+
+.calendar-day {
+  background-color: #ffffff;
+  color: var(--text-light);
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: var(--border-radius);
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.calendar-day:hover {
+  background-color: var(--primary-color-light);
+  transform: scale(1.1);
+}
+
+.calendar-day.empty {
+  background-color: transparent;
+}
+
+body.dark-mode .calendar-day {
+  background-color: #2b2b2b;
+  color: var(--text-dark);
+}
+
+body.dark-mode .calendar-day:hover {
+  background-color: var(--primary-color-dark);
+}
+
+/* Calendar View - Month and Week Styles */
+.calendar.month .calendar-day {
+  min-width: 40px;
+  min-height: 40px;
+}
+
+.calendar.week .calendar-day {
+  width: 100%;
+  padding: 15px;
+  text-align: center;
+}

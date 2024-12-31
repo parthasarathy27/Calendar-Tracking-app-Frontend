@@ -1,0 +1,44 @@
+/* index.css */
+
+:root {
+  --primary-color: #4caf50; /* Green */
+  --secondary-color: #f44336; /* Red */
+  --accent-color: #ff9800; /* Orange */
+  --background-color: #f9f9f9; /* Light gray */
+  --text-color-dark: #333333; /* Dark gray */
+  --text-color-light: #ffffff; /* White */
+  --border-color: #e0e0e0; /* Light border */
+  --shadow-color: rgba(0, 0, 0, 0.1); /* Light shadow */
+  --hover-bg-color: #e8f5e9; /* Light green hover */
+  --font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--background-color);
+  color: var(--text-color-dark);
+  box-sizing: border-box;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  margin: 0;
+}
+
+a {
+  text-decoration: none;
+  color: inherit;
+}
+
+button {
+  font-family: var(--font-family);
+  cursor: pointer;
+}
+
+.container {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 20px 0;
+}
