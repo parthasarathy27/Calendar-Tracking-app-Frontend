@@ -19,13 +19,6 @@ The **Calendar Tracking App** is a web-based tool designed to help organizations
 ### Calendar View
 - View and manage past and upcoming communications in a calendar interface.
 
-### Reporting and Analytics (Optional)
-- **Communication Frequency Report**: A visual report that shows the frequency of each communication method over a selected time period.
-- **Engagement Effectiveness**: Track the effectiveness of each communication method in terms of responses and engagement.
-- **Downloadable Reports**: Export reports in PDF or CSV format.
-
----
-
 ## Setup & Installation
 
 ### Prerequisites
