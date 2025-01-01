@@ -1,4 +1,3 @@
-// src/utils/api.js
 import axios from 'axios';
 
 // Set baseURL dynamically for development and production
@@ -22,10 +21,12 @@ api.interceptors.response.use(
 export const getCompanies = async () => {
   try {
     const response = await api.get('/admin/company');
+    // Ensure response is an array
     if (Array.isArray(response.data)) {
-      return response.data;  // Return only if it's an array
+      return response.data;
+    } else {
+      throw new Error('Response data is not an array');
     }
-    throw new Error('Response data is not an array');
   } catch (error) {
     console.error('Error fetching companies:', error.response?.data || error.message);
     throw error;
@@ -46,7 +47,11 @@ export const addCompany = async (data) => {
 export const getDashboard = async () => {
   try {
     const response = await api.get('/user/dashboard');
-    return response.data;
+    if (response.data && Array.isArray(response.data.companies)) {
+      return response.data;
+    } else {
+      throw new Error('No companies data available or data format is incorrect');
+    }
   } catch (error) {
     console.error('Error fetching dashboard data:', error.response?.data || error.message);
     throw error;
