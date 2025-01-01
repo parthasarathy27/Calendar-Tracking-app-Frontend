@@ -1,63 +1,32 @@
-// src/utils/api.js
 import axios from 'axios';
 
-// Set baseURL dynamically for development and production
 const api = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || 'http://localhost:5000/api', // Use environment variable or fallback to localhost
+  baseURL: 'calendar-tracking-app-backend.vercel.app/api', // Adjust if backend is running on a different port
   headers: {
     'Content-Type': 'application/json',
   },
 });
 
-// Interceptor to log errors (Optional)
-api.interceptors.response.use(
-  (response) => response,
-  (error) => {
-    console.error('API Error:', error.response?.data || error.message);
-    return Promise.reject(error);
-  }
-);
-
 // Admin API
-export const getCompanies = async () => {
-  try {
-    const response = await api.get('/admin/company');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching companies:', error.response?.data || error.message);
-    throw error;
-  }
-};
+export const getCompanies = () => api.get('/admin/company');
+export const addCompany = (data) => api.post('/admin/company', data);
 
-export const addCompany = async (data) => {
+// Delete company API call
+export const deleteCompany = async (companyId) => {
   try {
-    const response = await api.post('/admin/company', data);
+    if (!companyId) {
+      throw new Error("Company ID is missing.");
+    }
+    const response = await api.delete(`/admin/company/${companyId}`);
     return response.data;
   } catch (error) {
-    console.error('Error adding company:', error.response?.data || error.message);
-    throw error;
+    console.error("API Error:", error);
+    throw error; // Re-throw error to be caught by calling function
   }
 };
 
 // User API
-export const getDashboard = async () => {
-  try {
-    const response = await api.get('/user/dashboard');
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching dashboard data:', error.response?.data || error.message);
-    throw error;
-  }
-};
-
-export const logCommunication = async (data) => {
-  try {
-    const response = await api.post('/user/communication', data);
-    return response.data;
-  } catch (error) {
-    console.error('Error logging communication:', error.response?.data || error.message);
-    throw error;
-  }
-};
+export const getDashboard = () => api.get('/user/dashboard'); // Fetch dashboard data for user
+export const logCommunication = (data) => api.post('/user/communication', data); // Log a new communication
 
 export default api;
