@@ -22,7 +22,10 @@ api.interceptors.response.use(
 export const getCompanies = async () => {
   try {
     const response = await api.get('/admin/company');
-    return response.data;
+    if (Array.isArray(response.data)) {
+      return response.data;  // Return only if it's an array
+    }
+    throw new Error('Response data is not an array');
   } catch (error) {
     console.error('Error fetching companies:', error.response?.data || error.message);
     throw error;
