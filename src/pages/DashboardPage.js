@@ -9,7 +9,7 @@ import "./DashboardPage.css";
 const localizer = momentLocalizer(moment);
 
 const DashboardPage = () => {
-  const [companies, setCompanies] = useState([]);
+  const [companies, setCompanies] = useState([]); // Ensure companies is an array
   const [events, setEvents] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState(null);
@@ -24,11 +24,13 @@ const DashboardPage = () => {
     const fetchCompanies = async () => {
       try {
         const response = await getCompanies();
-        setCompanies(response.data);
+        const data = response?.data || []; // Ensure data is an array
+        setCompanies(data);
 
-        const eventList = response.data
+        // Map companies to events
+        const eventList = data
           .map((company) => ({
-            title: company.name,
+            title: company.name || "Unnamed Company",
             start: company.nextScheduledCommunication
               ? new Date(company.nextScheduledCommunication)
               : null,
@@ -37,7 +39,7 @@ const DashboardPage = () => {
               : null,
             companyId: company._id,
           }))
-          .filter((event) => event.start && event.end);
+          .filter((event) => event.start && event.end); // Filter out invalid events
 
         setEvents(eventList);
       } catch (error) {
@@ -73,10 +75,12 @@ const DashboardPage = () => {
 
       // Refresh data
       const response = await getCompanies();
-      setCompanies(response.data);
-      const eventList = response.data
+      const data = response?.data || [];
+      setCompanies(data);
+
+      const eventList = data
         .map((company) => ({
-          title: company.name,
+          title: company.name || "Unnamed Company",
           start: company.nextScheduledCommunication
             ? new Date(company.nextScheduledCommunication)
             : null,
@@ -86,6 +90,7 @@ const DashboardPage = () => {
           companyId: company._id,
         }))
         .filter((event) => event.start && event.end);
+
       setEvents(eventList);
     } catch (error) {
       console.error("Error logging communication:", error);
@@ -117,14 +122,14 @@ const DashboardPage = () => {
               <tbody>
                 {companies.map((company) => (
                   <tr key={company._id}>
-                    <td>{company.name}</td>
+                    <td>{company.name || "Unnamed Company"}</td>
                     <td>{company.location || "N/A"}</td>
                     <td>
                       {Array.isArray(company.lastCommunications) &&
                       company.lastCommunications.length > 0
                         ? company.lastCommunications
                             .slice(-5)
-                            .map((comm) => comm.type)
+                            .map((comm) => comm?.type || "Unknown")
                             .join(", ")
                         : "No communications available"}
                     </td>
@@ -172,7 +177,7 @@ const DashboardPage = () => {
                   <option value="">Select a company</option>
                   {companies.map((company) => (
                     <option key={company._id} value={company._id}>
-                      {company.name}
+                      {company.name || "Unnamed Company"}
                     </option>
                   ))}
                 </select>
