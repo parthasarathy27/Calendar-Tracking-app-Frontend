@@ -10,11 +10,14 @@ body {
   background-color: #f4f6f9;
   color: #333;
   line-height: 1.6;
+  padding: 0;
+  margin: 0;
 }
 
 h1, h2 {
   color: #2c3e50;
   font-weight: 600;
+  margin-bottom: 10px;
 }
 
 /* Menu Bar */
@@ -24,6 +27,7 @@ h1, h2 {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  flex-wrap: wrap;
 }
 
 .menu-bar a {
@@ -202,24 +206,53 @@ p {
   background-color: #c0392b;
 }
 
-/* Responsive Design */
-@media (max-width: 768px) {
-  .table-container {
+/* Responsive Design for Tablet and Mobile */
+@media (max-width: 1024px) {
+  .menu-bar {
+    padding: 15px 10px;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .menu-bar a {
+    font-size: 0.9rem;
+    margin: 0 10px;
+  }
+
+  .admin-page {
+    margin: 20px auto;
+    padding: 15px;
+  }
+
+  .admin-title {
+    font-size: 1.8rem;
+  }
+
+  .section {
+    padding: 15px;
+  }
+
+  .admin-form input,
+  .admin-form textarea,
+  .admin-form button {
     width: 100%;
+    padding: 10px;
   }
 
   .company-table th,
   .company-table td {
-    font-size: 0.75rem; /* Adjust font size for smaller screens */
-    padding: 6px 8px; /* Adjust padding for a more compact table */
+    font-size: 0.8rem;
+    padding: 8px;
+  }
+
+  .company-table td button {
+    padding: 5px 8px;
+    font-size: 0.75rem;
   }
 }
 
-@media (max-width: 480px) {
-  .admin-title {
-    font-size: 1.6rem;
-  }
-
+@media (max-width: 768px) {
+  /* Menu Bar */
   .menu-bar {
     flex-direction: column;
     align-items: flex-start;
@@ -229,14 +262,78 @@ p {
     margin: 5px 0;
   }
 
+  /* Admin Page */
+  .admin-title {
+    font-size: 1.6rem;
+  }
+
+  .admin-page {
+    padding: 10px;
+  }
+
+  .section {
+    padding: 10px;
+  }
+
+  .admin-form input,
+  .admin-form textarea,
+  .admin-form button {
+    width: 100%;
+    padding: 10px;
+  }
+
   .company-table th,
   .company-table td {
-    font-size: 0.7rem; /* Smaller font size for very small screens */
-    padding: 4px 6px; /* Even smaller padding */
+    font-size: 0.75rem;
+    padding: 6px;
   }
 
   .company-table td button {
-    padding: 4px 6px; /* Adjust button padding */
-    font-size: 0.7rem; /* Smaller button font */
+    padding: 4px 6px;
+    font-size: 0.7rem;
+  }
+}
+
+@media (max-width: 480px) {
+  /* Menu Bar */
+  .menu-bar {
+    padding: 10px;
+  }
+
+  .menu-bar a {
+    font-size: 0.8rem;
+    margin: 3px 0;
+  }
+
+  /* Admin Page */
+  .admin-title {
+    font-size: 1.4rem;
+  }
+
+  .admin-page {
+    margin: 10px;
+    padding: 10px;
+  }
+
+  .section {
+    padding: 8px;
+  }
+
+  .admin-form input,
+  .admin-form textarea,
+  .admin-form button {
+    width: 100%;
+    padding: 8px;
+  }
+
+  .company-table th,
+  .company-table td {
+    font-size: 0.7rem;
+    padding: 4px;
+  }
+
+  .company-table td button {
+    padding: 4px 6px;
+    font-size: 0.6rem;
   }
 }
