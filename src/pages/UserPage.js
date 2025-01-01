@@ -4,7 +4,7 @@ import Modal from "../components/Modal";
 import "./UserPage.css";
 
 const UserPage = () => {
-  const [dashboardData, setDashboardData] = useState({ companies: [] }); // Initialized with default structure
+  const [dashboardData, setDashboardData] = useState({ companies: [] });
   const [showModal, setShowModal] = useState(false);
   const [selectedCompany, setSelectedCompany] = useState(null);
   const [communicationData, setCommunicationData] = useState({
@@ -12,26 +12,24 @@ const UserPage = () => {
     date: "",
     notes: "",
   });
-  const [errorMessage, setErrorMessage] = useState(""); // State for error handling
+  const [errorMessage, setErrorMessage] = useState("");
 
-  // Fetch dashboard data on component mount
+  // Fetch dashboard data from API
   const fetchDashboardData = async () => {
     try {
       const response = await getDashboard();
-      if (response && response.data && Array.isArray(response.data.companies)) {
-        setDashboardData(response.data); // Correctly set dashboard data
-      } else {
-        setErrorMessage("Invalid response format or empty companies.");
-      }
+      console.log("Dashboard Data:", response); // Log the response for debugging
+      setDashboardData(response || { companies: [] });
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
       setErrorMessage("Failed to load dashboard data. Please try again later.");
     }
   };
 
+  // Fetch dashboard data on component mount
   useEffect(() => {
-    fetchDashboardData(); // Fetch data when component mounts
-  }, []); // Empty dependency ensures it runs only once on mount
+    fetchDashboardData();
+  }, []);
 
   // Handle communication logging
   const handleLogCommunication = async () => {
@@ -50,9 +48,9 @@ const UserPage = () => {
         date: communicationData.date,
         notes: communicationData.notes,
       });
-      setShowModal(false); // Close modal after submission
-      setCommunicationData({ type: "", date: "", notes: "" }); // Reset communication form
-      fetchDashboardData(); // Refresh dashboard data after logging communication
+      setShowModal(false);
+      setCommunicationData({ type: "", date: "", notes: "" });
+      fetchDashboardData(); // Refresh dashboard data
     } catch (error) {
       console.error("Error logging communication:", error);
       alert("Error logging communication. Please try again.");
@@ -61,12 +59,10 @@ const UserPage = () => {
 
   return (
     <div className="user-page">
-      {/* Display error message if available */}
       {errorMessage && <div className="error-message">{errorMessage}</div>}
 
-      {/* Dashboard section */}
       <div className="dashboard">
-        {dashboardData.companies.length > 0 ? (
+        {dashboardData.companies && dashboardData.companies.length > 0 ? (
           dashboardData.companies.map((company) => (
             <div className="company-row" key={company._id}>
               <h3>{company.name}</h3>
@@ -89,7 +85,7 @@ const UserPage = () => {
               <button
                 onClick={() => {
                   setShowModal(true);
-                  setSelectedCompany(company); // Set the selected company
+                  setSelectedCompany(company);
                 }}
               >
                 Log Communication
@@ -97,11 +93,10 @@ const UserPage = () => {
             </div>
           ))
         ) : (
-          <p>No companies available</p> // Show this message if there are no companies
+          <p>No companies available</p>
         )}
       </div>
 
-      {/* Modal for logging communication */}
       {showModal && (
         <Modal>
           <div className="modal-content">
