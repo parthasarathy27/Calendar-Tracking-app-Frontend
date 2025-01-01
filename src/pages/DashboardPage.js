@@ -23,10 +23,10 @@ const DashboardPage = () => {
   useEffect(() => {
     const fetchCompanies = async () => {
       try {
-        const response = await getCompanies();
-        setCompanies(response.data);
+        const companiesData = await getCompanies();
+        setCompanies(companiesData || []); // Ensure companies is always an array
 
-        const eventList = response.data
+        const eventList = companiesData
           .map((company) => ({
             title: company.name,
             start: company.nextScheduledCommunication
@@ -73,8 +73,8 @@ const DashboardPage = () => {
 
       // Refresh data
       const response = await getCompanies();
-      setCompanies(response.data);
-      const eventList = response.data
+      setCompanies(response || []);
+      const eventList = response
         .map((company) => ({
           title: company.name,
           start: company.nextScheduledCommunication
