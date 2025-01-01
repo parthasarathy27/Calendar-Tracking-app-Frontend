@@ -12,7 +12,7 @@
   "routes": [
     {
       "src": "/api/(.*)",
-      "dest": "https://calendar-tracking-app-backend.vercel.app/api/$1"  // Forward API requests to your backend API
+      "dest": "https://calendar-tracking-app-backend.vercel.app/api/$1"
     },
     {
       "src": "/(.*)",
@@ -20,6 +20,6 @@
     }
   ],
   "env": {
-    "REACT_APP_API_URL": "https://calendar-tracking-app-backend.vercel.app/api"  // Set the backend URL for your frontend
+    "REACT_APP_API_URL": "https://calendar-tracking-app-backend.vercel.app/api"
   }
 }
