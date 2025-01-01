@@ -2,7 +2,7 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080/api', // Adjust if backend is running on a different port
+  baseURL: 'calendar-tracking-app-backend.vercel.app/api', // Adjust if backend is running on a different port
   headers: {
     'Content-Type': 'application/json',
   },
