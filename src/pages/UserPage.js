@@ -17,7 +17,11 @@ const UserPage = () => {
   const fetchDashboardData = async () => {
     try {
       const response = await getDashboard();
-      setDashboardData(response.data || { companies: [] });
+      if (response && response.data && Array.isArray(response.data.companies)) {
+        setDashboardData(response.data); // Set valid data
+      } else {
+        setErrorMessage("Invalid response data format.");
+      }
     } catch (error) {
       console.error("Error fetching dashboard data:", error);
       setErrorMessage("Failed to load dashboard data. Please try again later.");
@@ -26,7 +30,7 @@ const UserPage = () => {
 
   useEffect(() => {
     fetchDashboardData();
-  }, []);
+  }, []); // Only fetch data on initial render
 
   const handleLogCommunication = async () => {
     if (!selectedCompany) {
