@@ -19,26 +19,31 @@
   --max-width: 1200px;
 }
 
-/* Global Styles */
-body {
+/* Reset margins and paddings for all elements */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
   font-family: var(--font-family);
   background-color: var(--background-light);
   color: var(--text-dark);
-  transition: background-color var(--transition-duration), color var(--transition-duration);
   display: flex;
   flex-direction: column;
   min-height: 100vh;
+  transition: background-color var(--transition-duration), color var(--transition-duration);
 }
 
+/* App container */
 .app {
   display: flex;
   flex-direction: column;
   min-height: 100vh;
   background-color: var(--background-light);
-  transition: background-color var(--transition-duration);
   overflow-x: hidden;
+  transition: background-color var(--transition-duration);
 }
 
 /* Header */
@@ -79,6 +84,16 @@ body {
   color: white;
 }
 
+/* Dark Mode */
+.dark-mode {
+  --header-bg-light: var(--header-bg-dark);
+  --text-dark: var(--text-light);
+  --background-light: var(--background-dark);
+  --primary-color: #ffa500;
+  --button-bg-light: var(--button-bg-dark);
+  --hover-bg-color-light: #444;
+}
+
 /* Button */
 button.dark-mode-toggle {
   padding: 12px 20px;
@@ -94,26 +109,6 @@ button.dark-mode-toggle {
 button.dark-mode-toggle:hover {
   background-color: var(--hover-bg-color-light);
   transform: scale(1.05);
-}
-
-/* Dark Mode */
-.dark-mode {
-  --header-bg-light: var(--header-bg-dark);
-  --text-dark: var(--text-light);
-  --background-light: var(--background-dark);
-  --primary-color: #ffa500;
-  --button-bg-light: var(--button-bg-dark);
-  --hover-bg-color-light: #444;
-}
-
-/* Light Mode */
-.light-mode {
-  --header-bg-light: var(--header-bg-light);
-  --text-dark: var(--text-dark);
-  --background-light: var(--background-light);
-  --primary-color: #007bff;
-  --button-bg-light: var(--button-bg-light);
-  --hover-bg-color-light: #0056b3;
 }
 
 /* Modal Overlay */
@@ -135,8 +130,8 @@ button.dark-mode-toggle:hover {
   background-color: #fff;
   border-radius: var(--border-radius);
   padding: 30px;
-  max-width: 600px;
   width: 100%;
+  max-width: 600px;
   box-shadow: var(--box-shadow);
   animation: fadeIn 0.5s ease-out;
 }
@@ -246,4 +241,75 @@ button.dark-mode-toggle:hover {
 .tooltip-container:hover .tooltip {
   visibility: visible;
   opacity: 1;
+}
+
+/* Responsive Design - Mobile First */
+
+/* Mobile Styles */
+@media (max-width: 768px) {
+  .app-header {
+    flex-direction: column;
+    padding: 15px;
+    gap: 10px;
+  }
+
+  .app-nav {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .app-nav a {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  button.dark-mode-toggle {
+    padding: 10px 15px;
+    font-size: 14px;
+  }
+
+  .modal-container {
+    width: 90%;
+    padding: 20px;
+  }
+
+  .modal-content form button {
+    padding: 14px;
+  }
+}
+
+/* Tablet and Larger Screens */
+@media (min-width: 769px) and (max-width: 1200px) {
+  .app-header {
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 20px;
+  }
+
+  .app-nav {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .modal-container {
+    width: 80%;
+    padding: 30px;
+  }
+}
+
+/* Desktop and Larger Screens */
+@media (min-width: 1201px) {
+  .app-header {
+    padding: 25px;
+  }
+
+  .modal-container {
+    width: 60%;
+    padding: 40px;
+  }
+
+  .modal-content form button {
+    padding: 16px;
+  }
 }
