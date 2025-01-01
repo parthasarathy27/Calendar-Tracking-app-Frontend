@@ -3,22 +3,11 @@ import React, { useState, useEffect } from 'react';
 import Calendar from '../components/Calendar';
 import Navbar from '../components/Navbar';
 import './CalendarPage.css';
-import { useTheme } from '../context/ThemeContext';
 
 const CalendarPage = () => {
   const [viewMode, setViewMode] = useState('month');
   const [currentYear, setCurrentYear] = useState(new Date().getFullYear());
   const [currentMonth, setCurrentMonth] = useState(new Date().getMonth());
-  const { theme, toggleTheme } = useTheme();
-
-  useEffect(() => {
-    // Apply the current theme to the body element
-    if (theme === 'dark') {
-      document.body.classList.add('dark-mode');
-    } else {
-      document.body.classList.remove('dark-mode');
-    }
-  }, [theme]);
 
   const toggleView = () => {
     setViewMode(viewMode === 'month' ? 'week' : 'month');
@@ -65,9 +54,6 @@ const CalendarPage = () => {
           </div>
           <button className="toggle-view-btn" onClick={toggleView}>
             Toggle View ({viewMode})
-          </button>
-          <button className="toggle-view-btn" onClick={toggleTheme}>
-            Toggle Theme ({theme === 'light' ? 'Light' : 'Dark'})
           </button>
         </div>
         <Calendar 
