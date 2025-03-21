@@ -171,7 +171,7 @@ button.dark-mode-toggle:hover {
   border: 1px solid #ddd;
   border-radius: var(--border-radius);
   font-size: 16px;
-  color: var(--text-dark);
+  color: #333;
   transition: border-color var(--transition-duration), box-shadow var(--transition-duration);
 }
 
