@@ -1,0 +1,93 @@
+/* CalendarPage.css */
+.calendar-page {
+  animation: fadeIn 0.5s ease-out;
+}
+
+.calendar-container {
+  padding: 1.5rem;
+  overflow: hidden;
+}
+
+.calendar-wrapper {
+  color: var(--text-main);
+}
+
+/* Big Calendar Overrides */
+.rbc-calendar {
+  font-family: 'Inter', sans-serif;
+  background: transparent;
+}
+
+.rbc-toolbar {
+  margin-bottom: 1.5rem !important;
+  background: var(--glass-border);
+  padding: 0.75rem;
+  border-radius: 12px;
+}
+
+.rbc-toolbar button {
+  color: var(--text-main) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: 8px !important;
+  margin: 0 2px !important;
+  background: transparent !important;
+  transition: all 0.2s ease;
+}
+
+.rbc-toolbar button:hover {
+  background: var(--primary) !important;
+  color: white !important;
+}
+
+.rbc-toolbar button.rbc-active {
+  background: var(--primary) !important;
+  color: white !important;
+  box-shadow: none !important;
+}
+
+.rbc-month-view, .rbc-time-view, .rbc-agenda-view {
+  border: 1px solid var(--border) !important;
+  border-radius: 12px !important;
+  overflow: hidden;
+  background: var(--bg-card);
+}
+
+.rbc-header {
+  padding: 1rem !important;
+  font-weight: 600 !important;
+  border-bottom: 1px solid var(--border) !important;
+}
+
+.rbc-day-bg + .rbc-day-bg, .rbc-month-row + .rbc-month-row {
+  border-left: 1px solid var(--border) !important;
+}
+
+.rbc-month-row {
+  border-top: 1px solid var(--border) !important;
+}
+
+.rbc-off-range-bg {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+.dark-mode .rbc-off-range-bg {
+    background: rgba(255, 255, 255, 0.02) !important;
+}
+
+.rbc-now {
+    color: var(--primary) !important;
+    font-weight: 700 !important;
+}
+
+.rbc-event {
+  background-color: var(--primary) !important;
+  padding: 3px 10px !important;
+  border-radius: 6px !important;
+  font-size: 0.8125rem !important;
+}
+
+@media (max-width: 768px) {
+    .calendar-container {
+        padding: 0.5rem;
+    }
+}

@@ -1,0 +1,41 @@
+/* Skeleton.css */
+.skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--border) 25%,
+    var(--bg-main) 50%,
+    var(--border) 75%
+  );
+  background-size: 200% 100%;
+  animation: loading 1.5s infinite;
+  border-radius: 8px;
+}
+
+@keyframes loading {
+  0% { background-position: 200% 0; }
+  100% { background-position: -200% 0; }
+}
+
+.skeleton.text {
+  height: 1rem;
+  width: 100%;
+  margin-bottom: 0.5rem;
+}
+
+.skeleton.title {
+  height: 2rem;
+  width: 60%;
+  margin-bottom: 1rem;
+}
+
+.skeleton.card {
+  height: 200px;
+  width: 100%;
+  border-radius: 16px;
+}
+
+.skeleton.avatar {
+  height: 48px;
+  width: 48px;
+  border-radius: 50%;
+}
